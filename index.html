@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Judah Zoe Athaliah Noefe Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+<style>
+  :root{
+    --blue:#92AFD7;
+    --cream:#FDFCDC;
+    --brown:#5e5343;
+    --slate:#3C474B;
+    --green:#558B6E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',sans-serif;
+    color:var(--slate);
+    background:var(--cream);
+    line-height:1.7;
+  }
+  h1,h2,h3,.serif{font-family:'Young Serif',serif}
+  a{color:inherit;text-decoration:none}
+  section{padding:2.6rem 1.5rem 5rem;scroll-margin-top:64px}
+  .wrap{max-width:1050px;margin:0 auto}
+  .section-title{
+    font-size:clamp(2rem,5vw,3rem);
+    text-align:center;
+    margin-bottom:2.5rem;
+    font-weight:700;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--slate);
+    padding:1.1rem 1.5rem;
+    display:flex;justify-content:center;align-items:center;gap:clamp(1rem,4vw,3rem);
+    flex-wrap:wrap;
+    box-shadow:0 2px 12px rgba(60,71,75,.15);
+  }
+  nav a{
+    color:var(--cream);font-weight:600;font-size:1rem;
+    letter-spacing:.5px;transition:color .2s;
+  }
+  nav a:hover{color:var(--blue)}
+  .nav-toggle{
+    display:none;background:none;border:none;color:var(--cream);
+    font-size:1.4rem;cursor:pointer;padding:.2rem;line-height:1;
+  }
+  .nav-links{
+    display:flex;align-items:center;gap:clamp(1rem,4vw,3rem);flex-wrap:wrap;
+  }
+  @media(max-width:640px){
+    nav{justify-content:space-between;position:relative}
+    .nav-toggle{display:block}
+    .nav-links{
+      display:none;flex-direction:column;width:100%;
+      gap:1rem;padding-top:1rem;text-align:center;
+    }
+    .nav-links.open{display:flex}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--blue);
+    padding:4.5rem 1.5rem 5rem;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:2.5rem;
+    align-items:center;
+  }
+  .hero-text{text-align:center}
+  .hero h1{
+    color:var(--brown);
+    font-size:clamp(2.4rem,6vw,4.2rem);
+    line-height:1.05;
+    margin-bottom:.6rem;
+    font-weight:700;
+  }
+  .hero .role{
+    color:var(--cream);
+    font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;font-size:clamp(.8rem,2vw,1rem);
+  }
+  .hero .tagline{
+    color:var(--slate);
+    max-width:480px;margin:1.4rem auto 0;
+    font-size:1.26rem;
+  }
+  .hero-photo{
+    width:100%;
+    aspect-ratio:4/5;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--slate);
+    font-weight:600;
+    font-size:.9rem;
+    padding:1rem;
+    overflow:hidden;
+    transition:transform .3s ease;
+  }
+  .hero-photo:hover{transform:rotate(-2deg) scale(1.02)}
+  .hero-photo img{
+    width:100%;height:100%;object-fit:cover;border-radius:16px;
+  }
+  @media(max-width:768px){
+    .hero .wrap{grid-template-columns:1.1fr 0.9fr;gap:1.2rem}
+    .hero-photo{font-size:.7rem}
+  }
+  @media(max-width:480px){
+    .hero .tagline{font-size:.85rem}
+  }
+  @media(max-width:640px){
+    .hero .wrap{
+      grid-template-columns:1fr;
+      gap:1.5rem;
+    }
+    .hero-photo{
+      max-width:240px;
+      justify-self:center;
+    }
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--cream)}
+  #about .section-title{color:var(--green)}
+  .about-row{
+  display:grid;
+  grid-template-columns:1fr minmax(0,230px);
+  gap:2rem;
+  align-items:center;
+  margin-bottom:1rem;
+  }
+  .about-row.reverse{
+    grid-template-columns:minmax(0,230px) 1fr;
+  }
+  .about-row.reverse .about-photo{order:-1}
+  .about-text-block p{margin-bottom:1.1rem;color:var(--brown);text-indent:1.5em;font-size:1.2rem}
+  .about-text-block p:last-child{margin-bottom:0}
+  .about-photo{
+    width:100%;
+    max-width:230px;
+    aspect-ratio:1/1;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:var(--slate);
+    font-weight:600;
+    font-size:.85rem;
+    padding:1rem;
+    overflow:hidden;
+    transition:transform .3s ease;
+  }
+  .about-photo:hover{transform:rotate(-3deg) scale(1.03)}
+  .about-row .about-photo{justify-self:end}
+  .about-row.reverse .about-photo{justify-self:start}
+  .about-photo img{
+    width:100%;height:100%;object-fit:cover;border-radius:14px;
+  }
+  @media(max-width:768px){
+    .about-row,.about-row.reverse{gap:1.2rem}
+    .about-photo{font-size:.7rem;padding:.6rem}
+    #skills{padding-top:3.5rem;padding-bottom:3.5rem}
+  }
+  @media(max-width:480px){
+    .about-row.reverse{grid-template-columns:1fr 1.4fr}
+    .about-text-block p{font-size:1.02rem;margin-bottom:.7rem}
+  }
+  @media(max-width:640px){
+    .about-row,
+    .about-row.reverse{
+      grid-template-columns:1fr;
+      gap:1.2rem;
+    }
+    .about-row .about-photo,
+    .about-row.reverse .about-photo{
+      justify-self:center;
+      order:1;
+    }
+    .about-row.reverse .about-text-block{
+      order:0;
+    }
+  }
+
+  /* ---------- SKILLS ---------- */
+  #skills{
+    background:var(--green);
+    padding-top:4.5rem;
+    padding-bottom:4.5rem;
+  }
+  #skills .section-title{color:var(--cream)}
+  .skill-cloud{
+    font-size:clamp(6.5px, calc((100vw - 3rem) / 50), 16px);
+    display:flex;
+    flex-direction:column;
+    gap:1.1em;
+    max-width:800px;
+    margin:0 auto;
+  }
+  .skill-row{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    align-items:center;gap:.8em;
+  }
+  .skill-title-row{
+    display:flex;justify-content:center;
+  }
+  .skill-title{
+    font-family:'Young Serif',serif;
+    font-weight:700;
+    font-size:clamp(2rem,5vw,3rem);
+    color:var(--cream);
+    padding:0;
+  }
+  .skill-title + .doodle{
+    margin-left:-.35rem;
+  }
+  .skill{
+    background:#fefeee;color:var(--slate);
+    padding:.5em 1.2em;
+    border-radius:40px;
+    font-weight:600;
+    font-size:1em;
+    white-space:nowrap;
+    transition:transform .2s;
+    cursor:default;
+  }
+  .skill:hover{transform:translateY(-4px) scale(1.05)}
+  .skill.lg{font-size:1.7em}
+  .skill.md{font-size:1.25em}
+  .skill.blue{color:var(--blue)}
+  .skill.slate{color:var(--green)}
+  .skill.brown{color:var(--brown)}
+
+  /* ---------- PROCESS ---------- */
+  #process{background:var(--slate);padding:1.8rem 1.5rem}
+  #process .section-title{color:var(--blue);margin-bottom:1.2rem}
+  .process-grid{
+    display:flex;flex-wrap:nowrap;justify-content:center;
+    gap:1.2rem 2rem;max-width:1150px;margin:0 auto;
+  }
+  .process-step{flex:1 1 0;min-width:0}
+  @media(max-width:600px){
+    .process-grid{flex-wrap:wrap;gap:1.4rem 1.8rem}
+    .process-step{flex:0 1 170px}
+  }
+  .process-step{text-align:center}
+  .process-step h3{
+    color:var(--cream);font-size:1.56rem;margin-bottom:.6rem;
+  }
+  .process-step p{
+    color:rgba(253,252,220,.75);font-size:1.08rem;
+  }
+
+  /* ---------- EXPERIENCE ---------- */
+  #experience{background:var(--cream)}
+  #experience .section-title{color:var(--brown)}
+  .exp-row{
+    padding:2.4rem 0;
+    border-top:1px solid rgba(60,71,75,.18);
+  }
+  .exp-row:last-child{
+    border-bottom:1px solid rgba(60,71,75,.18);
+  }
+  .exp-row h3{color:var(--slate);font-size:1.62rem}
+  .exp-row > p:not(.meta):not(.exp-subhead){text-indent:1.5em;font-size:1.2rem}
+  .pld-row p{text-indent:1.5em;font-size:1.2rem}
+  .bb-row1 p{text-indent:1.5em;font-size:1.2rem}
+  .exp-subhead{
+    font-family:'Young Serif',serif;font-weight:700;
+    font-size:1.26rem;color:var(--slate);
+    margin:1.6rem 0 .8rem;
+  }
+  .pld-row{
+    display:grid;grid-template-columns:280px minmax(0,480px);
+    gap:5.5rem;align-items:center;justify-content:center;
+    margin-bottom:2rem;
+  }
+  .pld-text{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .pld-text p{margin:0}
+  .bb-icons{
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    margin-top:-1.2rem;
+    margin-bottom:-.8rem;
+  }
+  .bb-icon{
+    width:100%;
+    max-width:280px;
+    aspect-ratio:1/1;
+    transition:transform .3s ease;
+  }
+  .bb-icon:hover{transform:rotate(-4deg) scale(1.05)}
+  .bb-icon img{width:100%;height:100%;object-fit:contain}
+  @media(max-width:640px){
+    .bb-icon{max-width:160px}
+  }
+  .bb-row1{
+    display:flex;
+    align-items:center;
+    gap:2rem;
+  }
+  .bb-text{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+    flex:1;
+  }
+  .bb-text p{margin:0}
+  .bb-row1 .device-browser{flex:1}
+  @media(max-width:900px){
+    .bb-row1{
+      flex-direction:column;
+      align-items:stretch;
+      gap:1rem;
+    }
+    .bb-text{display:contents}
+    .bb-p1{order:1;flex:none;margin:0 0 0}
+    .bb-row1 > .device-browser{order:2;flex:none}
+    .bb-p2{order:3;flex:none}
+  }
+  .device-browser{
+    width:100%;
+    aspect-ratio:16/10;
+    border-radius:12px;
+    position:relative;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--slate);font-weight:600;font-size:.8rem;
+    padding:0;overflow:hidden;
+    border:4px solid var(--blue);
+    transition:transform .3s ease;
+  }
+  .device-browser:hover{transform:rotate(-1.5deg) scale(1.015)}
+  .device-browser img,.device-browser video{width:100%;height:100%;object-fit:cover;border-radius:8px}
+  .exp-row .meta{color:var(--green);font-weight:700;margin:.2rem 0 1rem;font-size:1.14rem}
+  .exp-row p{color:var(--brown)}
+  .thumb-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem}
+  .thumb{
+    flex:1;min-width:180px;aspect-ratio:16/9;border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .3s ease;
+    color:var(--slate);font-size:.8rem;text-align:center;padding:0;
+    overflow:hidden;
+    border:4px solid var(--blue);
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+  .thumb:hover{transform:rotate(-2.5deg) scale(1.04)}
+  .thumb:nth-child(2):hover{transform:rotate(2deg) scale(1.04)}
+  .thumb:nth-child(3):hover{transform:rotate(-1.5deg) scale(1.04)}
+  @media(max-width:850px){
+    .pld-row{
+      gap:2.5rem;
+    }
+  }
+  @media(max-width:640px){
+    .pld-row{
+      grid-template-columns:1fr;
+      gap:1rem;
+    }
+    .pld-row .logo-photo{justify-self:center}
+  }
+  .logo-photo{
+    width:100%;
+    max-width:280px;
+    justify-self:center;
+    aspect-ratio:1/1;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--slate);font-weight:600;font-size:.75rem;
+    padding:0;overflow:hidden;
+    border:4px solid var(--green);
+    transition:transform .3s ease;
+  }
+  .logo-photo:hover{transform:rotate(3deg) scale(1.03)}
+  .logo-photo img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+  .device-row{display:flex;gap:1.2rem;flex-wrap:nowrap;align-items:flex-end;justify-content:center;margin-top:1.2rem}
+  .device-phone{
+    flex:1 1 220px;
+    max-width:260px;
+    min-width:0;
+    aspect-ratio:9/19;
+    border-radius:20px;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--slate);font-weight:600;font-size:.7rem;
+    padding:0;overflow:hidden;
+    border:4px solid var(--green);
+    transition:transform .3s ease;
+  }
+  .device-phone:hover{transform:rotate(-3deg) scale(1.03)}
+  .device-phone:nth-child(2):hover{transform:rotate(3deg) scale(1.03)}
+  .device-phone img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+  .device-laptop{
+    flex:1;min-width:220px;
+    aspect-ratio:16/10;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;color:var(--slate);font-weight:600;font-size:.8rem;
+    padding:.8rem;overflow:hidden;
+  }
+  .device-laptop img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+  .btn{
+    display:block;
+    width:max-content;
+    margin:1.2rem auto 0;
+    text-align:center;
+    background:var(--green);color:var(--cream);
+    padding:.6rem 1.4rem;border-radius:30px;font-weight:700;
+    transition:background .2s, transform .2s;
+  }
+  .btn:hover{background:var(--slate);transform:scale(1.06)}
+
+  /* Test case table */
+  .table-wrap{overflow-x:auto;margin-top:1.4rem}
+  table{width:100%;border-collapse:collapse;min-width:660px;font-size:1.08rem;background:#fefeee}
+  th{background:var(--slate);color:var(--cream);padding:.7rem;text-align:center}
+  td{padding:.7rem;border-bottom:1px solid var(--blue);color:var(--brown);vertical-align:top}
+  tr:nth-child(even) td{background:rgba(146,175,215,.12)}
+
+  /* ---------- CERTIFICATES ---------- */
+  #certificates{background:var(--blue)}
+  #certificates .section-title{color:var(--brown)}
+  .cert-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem}
+  .cert{flex:1 1 270px;max-width:360px}
+  .cert{
+    background:#fefeee;border-radius:0;padding:1.4rem 1.6rem;
+    border-left:4px solid var(--green);
+    transition:border-left-width .2s, border-left-color .2s, transform .2s;
+  }
+  .cert:hover{
+    border-left-width:8px;
+    border-left-color:var(--slate);
+    transform:scale(1.03);
+  }
+  .cert h3{color:var(--slate);font-size:1.44rem;margin-bottom:.4rem}
+  .cert .issuer{color:var(--brown);font-weight:600;font-size:1.08rem}
+
+  /* ---------- CONTACT ---------- */
+  #contact{background:var(--cream);text-align:center}
+  #contact .section-title{
+    color:var(--green);max-width:640px;margin-inline:auto;
+    font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:1.5rem;
+  }
+  .contact-links{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+    gap:.9rem;max-width:620px;margin:0 auto;text-align:left;
+  }
+  .contact-links a{
+    display:flex;align-items:center;gap:1rem;
+    background:#fefeee;border-radius:0;
+    padding:1.1rem 1.5rem;
+    border-left:4px solid var(--blue);
+    color:var(--slate);
+    transition:background .15s, border-left-width .2s, border-left-color .2s, transform .2s;
+  }
+  .contact-links a:hover{
+    background:rgba(146,175,215,.1);
+    border-left-width:8px;
+    border-left-color:var(--green);
+    transform:scale(1.03);
+  }
+  .contact-icon{
+    width:44px;height:44px;border-radius:12px;flex-shrink:0;
+    background:rgba(146,175,215,.25);color:var(--slate);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    transition:transform .3s ease;
+  }
+  .contact-links a:hover .contact-icon{animation:icon-bounce .5s ease}
+  @keyframes icon-bounce{
+    0%,100%{transform:translateY(0)}
+    30%{transform:translateY(-6px)}
+    50%{transform:translateY(0)}
+    70%{transform:translateY(-3px)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .contact-links a:hover .contact-icon{animation:none}
+  }
+  .contact-text{display:flex;flex-direction:column;gap:.15rem}
+  .contact-label{
+    font-size:.84rem;text-transform:uppercase;letter-spacing:.6px;
+    color:var(--brown);font-weight:700;opacity:.7;
+  }
+  .contact-value{font-size:1.14rem;font-weight:600;color:var(--slate)}
+  footer{background:var(--slate);color:var(--cream);text-align:center;padding:1.2rem 1.5rem;font-size:.9rem}
+  .footer-quote{
+    font-family:'Young Serif',serif;font-style:italic;
+    color:rgba(253,252,220,.75);margin-bottom:.4rem;font-size:.92rem;
+  }
+
+  /* ---------- DOODLES ---------- */
+  .doodle{
+    width:56px;height:42px;border-radius:6px;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:.5rem;font-weight:700;vertical-align:middle;
+    overflow:hidden;flex-shrink:0;
+  }
+  .doodle img{width:100%;height:100%;object-fit:contain}
+  #skills .doodle{color:var(--cream);}
+  #process .doodle{color:var(--blue)}
+  .doodle{transition:transform .2s}
+  .doodle:hover{animation:doodle-wiggle .5s ease;}
+  @keyframes doodle-wiggle{
+    0%{transform:rotate(0deg)}
+    25%{transform:rotate(-10deg)}
+    50%{transform:rotate(8deg)}
+    75%{transform:rotate(-6deg)}
+    100%{transform:rotate(0deg)}
+  }
+  .doodle.doodle-shake{animation:doodle-shake .7s ease;}
+  @keyframes doodle-shake{
+    0%{transform:translateX(0) rotate(0deg)}
+    15%{transform:translateX(-6px) rotate(-8deg)}
+    30%{transform:translateX(5px) rotate(6deg)}
+    45%{transform:translateX(-4px) rotate(-5deg)}
+    60%{transform:translateX(3px) rotate(4deg)}
+    75%{transform:translateX(-2px) rotate(-2deg)}
+    100%{transform:translateX(0) rotate(0deg)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .doodle:hover{animation:none}
+    .doodle.doodle-shake{animation:none}
+  }
+  .exp-row h3 .doodle{color:var(--slate);margin-right:.5rem;display:inline-flex}
+  #certificates .section-title .doodle{color:var(--brown)}
+  #contact .doodle{color:var(--green)}
+  footer .doodle{color:var(--cream);margin-bottom:.4rem;width:40px;height:30px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:768px){
+    section{padding:2rem 1.2rem 3.5rem}
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in-view{opacity:1;transform:translateY(0)}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <i class="ti ti-menu-2"></i>
+  </button>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Judah Zoe<br>Athaliah Noefe</h1>
+      <p class="role">Computer Science Student <br> Quality Assurance &amp; Visual Design</p>
+      <p class="tagline">I work on both sides of a product: making sure it looks right, and making sure it works right.</p>
+    </div>
+    <div class="hero-photo">
+      <img src="joobah.png" alt="judah zoe doodle">
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2 class="section-title reveal">About Me</h2>
+
+    <div class="about-row reveal">
+      <div class="about-text-block">
+        <p>I'm a Computer Science student at the University of Baguio, with a background that started in astronomy before I found my footing in CS.</p>
+        <p>That research background left its mark on how I work. I like understanding systems from the inside out — whether that's software behavior or visual design. I'm someone who notices details other people skip past, and I'd rather get something right than get it done fast.</p>
+      </div>
+      <div class="about-photo"><img src="leo.png" alt="constellation doodle"></div>
+    </div>
+
+    <div class="about-row reverse reveal">
+      <div class="about-photo"><img src="block.png" alt="Minecraft block doodle"></div>
+      <div class="about-text-block">
+        <p>Outside of coursework, I'm into digital art and illustration, musical theatre, gaming, and anything space-related.</p>
+        <p>With the same curiosity expressed through different outlets, I don't confine myself to one path. So, I am currently looking for remote opportunities in testing, design, or ideally both.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="skill-cloud reveal">
+      <div class="skill-row">
+        <span class="skill lg blue">Detail-Oriented</span>
+        <span class="skill">PHP</span>
+        <span class="skill">Research &amp; Fact-Checking</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill">HTML</span>
+        <span class="skill lg">Quality Assurance</span>
+        <span class="skill lg slate">Brand &amp; Logo Design</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill blue">Adaptable</span>
+        <span class="skill">Java</span>
+        <span class="skill-title serif">Skills</span>
+        <span class="doodle"><img src="magnifying-glass.png" alt="magnifying glass doodle"></span>
+        <span class="skill lg">Photoshop</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill md">Regression Testing</span>
+        <span class="skill lg">Software Testing</span>
+        <span class="skill">Python</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill slate">Canva</span>
+        <span class="skill">SQL</span>
+        <span class="skill">TypeScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <h2 class="section-title reveal">My Process <span class="doodle"><img src="pencil.png" alt="pencil doodle"></span></h2>
+    <div class="process-grid">
+      <div class="process-step reveal" style="transition-delay:.05s">
+        <h3>Explore</h3>
+        <p>Get the full picture of what's needed and what's already there.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.2s">
+        <h3>Draft</h3>
+        <p>Map out the details before committing to anything.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.35s">
+        <h3>Create</h3>
+        <p>Execute the plan and build with intention.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.5s">
+        <h3>Review</h3>
+        <p>Check that the product holds up, bring in some feedback.</p>
+      </div>
+      <div class="process-step reveal" style="transition-delay:.65s">
+        <h3>Polish</h3>
+        <p>One last pass, for the details that matter most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <h2 class="section-title reveal">Work Experience</h2>
+
+    <div class="exp-row reveal">
+      <h3><span class="doodle"><img src="microphone.png" alt="mic doodle"></span>Seminar Organizer | Beyond the Code: From Academe to Industry</h3>
+      <p class="meta">University of Baguio School of Information Technology Honor Society | November 2025</p>
+      <p>I planned the event flow and program structure, coordinated with resource speakers, and co-led the organizing team to ensure smooth execution. I also designed the master presentation deck used throughout the event, handling the visual identity for the seminar's branding, slide layout, and content flow.</p>
+      <div class="thumb-row">
+        <div class="thumb"><img src="slide-1.png" alt="title slide"></div>
+        <div class="thumb"><img src="slide-15.png" alt="content slide"></div>
+        <div class="thumb"><img src="slide-31.png" alt="closing slide"></div>
+      </div>
+      <a class="btn" href="https://canva.link/d7p63vo01sokgkj" target="_blank" rel="noopener">View Full Presentation</a>
+    </div>
+
+    <div class="exp-row reveal">
+      <h3><span class="doodle"><img src="cursor.png" alt="cursor doodle"></span>Freelance Graphic Designer</h3>
+      <p class="meta">January 2026 – Present</p>
+      <p>I design logos and visual assets for early-stage apps and personal projects.</p>
+
+      <p class="exp-subhead">Personal Logo Design</p>
+      <div class="pld-row">
+        <div class="logo-photo"><img src="jn-logo.jpg" alt="jn logo"></div>
+        <div class="pld-text">
+          <p>For a creative computing class assignment, we were given total creative freedom in Adobe Photoshop to represent ourselves through a personal logo.</p>
+          <p>I designed my initials with a whimsical, wood texture, leaning into my love for goblincore and forest aesthetics. When it comes to design, I'm drawn to the idea of messy but intentional.</p>
+        </div>
+      </div>
+
+      <p class="exp-subhead">BudgetBuddy | Logo &amp; Branding Assets</p>
+      <div class="bb-icons">
+        <div class="bb-icon"><img src="budgetbuddy-logo.png" alt="BudgetBuddy logo icon"></div>
+        <div class="bb-icon"><img src="budgetbuddy-login-icon.png" alt="BudgetBuddy login icon"></div>
+        <div class="bb-icon"><img src="budgetbuddy-chat-icon.png" alt="BudgetBuddy chat icon"></div>
+      </div>
+      <div class="bb-row1">
+        <div class="bb-text">
+          <p class="bb-p1">I designed the logo suite for BudgetBuddy, a personal finance tracking app available on both mobile and web. This includes the main logo, a stylized rendition used for the login screen's animation (implemented by the developer), and a custom icon for the chat feature.</p>
+          <p class="bb-p2">Beyond the visuals, I also helped test the app informally alongside development, checking usability and catching bugs before release.</p>
+        </div>
+        <div class="device-browser">
+          <video src="budgetbuddy-login.mp4" autoplay loop muted playsinline></video>
+        </div>
+      </div>
+      <div class="device-row">
+        <div class="device-phone"><img src="dashboard.jpg" alt="BudgetBuddy dashboard"></div>
+        <div class="device-phone"><img src="chat.jpg" alt="BudgetBuddy chat"></div>
+      </div>
+      <a class="btn" href="https://budgetbuddyweb.vercel.app" target="_blank" rel="noopener">View Live Site Here</a>
+    </div>
+
+    <div class="exp-row reveal">
+      <h3><span class="doodle"><img src="ladybug.png" alt="ladybug doodle"></span>QA Reviewer | SIT Sandbox</h3>
+      <p class="meta">University of Baguio School of Information Technology | January – May 2026</p>
+      <p>I tested features across multiple modules within a department-based web application, including registration and email verification, login, forgot password, public board display, navigation, report modals, notifications, admin dashboard, search, and filtering. I worked alongside one other tester, covering 20 test cases in total.</p>
+      <p style="margin-top:1rem"><strong>My approach:</strong> Rather than just checking whether a feature technically worked, I focused on functional testing, cross-device behavior, and regression testing after fixes — making sure resolved issues stayed resolved and didn't introduce new ones.</p>
+      <p class="exp-subhead">Sample Test Cases</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Test Case</th><th>Steps</th><th>Expected Result</th><th>Actual Result</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Forgot Password: Unregistered Email</td>
+              <td>Enter an unregistered email in "Forgot Password", submit</td>
+              <td>System flags that the email isn't linked to a registered user</td>
+              <td>Success toast claimed a reset link was sent to the unregistered email</td>
+            </tr>
+            <tr>
+              <td>Navigation Bar: Cross-Device</td>
+              <td>Open app to load navigation bar</td>
+              <td>Nav bar renders properly without overlapping system UI</td>
+              <td>Nav bar overlaps the system's navigation bar on Android -usability issue</td>
+            </tr>
+            <tr>
+              <td>Notification: Report Resolution</td>
+              <td>Submit a report, have an admin resolve it, check user notifications</td>
+              <td>User receives a notification once report is dismissed/resolved</td>
+              <td>No notification was sent to the user on resolution</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1.2rem"><strong>Outcome:</strong> Flagged issues were reported to the development team, verified through regression testing after fixes, and confirmed resolved before release.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="wrap">
+    <h2 class="section-title reveal">Certificates <span class="doodle"><img src="ribbon.png" alt="ribbon doodle"></span></h2>
+    <div class="cert-grid reveal">
+      <a class="cert" href="https://drive.google.com/file/d/17nDmsVMeVC0kMQuidjBHsWCL10t1j1bI/view?usp=drive_link" target="_blank" rel="noopener"><h3>Introduction to Cybersecurity</h3><p class="issuer">Cisco Systems | February 2025</p></a>
+      <a class="cert" href="https://drive.google.com/file/d/1N6YO0MHGl_YUbhqsnZZb0MTZie8cA2GP/view?usp=drive_link" target="_blank" rel="noopener"><h3>Introduction to Artificial Intelligence</h3><p class="issuer">Simplilearn | August 2025</p></a>
+      <a class="cert" href="https://drive.google.com/file/d/1lHTmCQ2Lu5lWI_l-mfEywEXfc4XNV6Fv/view?usp=drive_link" target="_blank" rel="noopener"><h3>Introduction to IoT and Digital Transformation</h3><p class="issuer">Cisco Systems | November 2025</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <span class="doodle"><img src="letter.png" alt="letter doodle"></span>
+    <h2 class="section-title">Let's work together <br> on testing, design, or whatever else <br> you think I'd be a good fit for.</h2>
+    <div class="contact-links">
+      <a href="mailto:zoe.noefe@gmail.com">
+        <span class="contact-icon"><i class="ti ti-mail"></i></span>
+        <span class="contact-text">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">zoe.noefe@gmail.com</span>
+        </span>
+      </a>
+      <a href="https://wa.me/639279613541" target="_blank" rel="noopener">
+        <span class="contact-icon"><i class="ti ti-brand-whatsapp"></i></span>
+        <span class="contact-text">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+63 927 961 3541</span>
+        </span>
+      </a>
+      <a href="https://www.linkedin.com/in/judah-zoe-athaliah-noefe-9a17bb24a" target="_blank" rel="noopener">
+        <span class="contact-icon"><i class="ti ti-brand-linkedin"></i></span>
+        <span class="contact-text">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">Judah Zoe Athaliah Noefe</span>
+        </span>
+      </a>
+      <a href="https://www.facebook.com/judahzoe/" target="_blank" rel="noopener">
+        <span class="contact-icon"><i class="ti ti-brand-facebook"></i></span>
+        <span class="contact-text">
+          <span class="contact-label">Facebook</span>
+          <span class="contact-value">Zoe Noefe</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="doodle"><img src="tea.png" alt="cup of tea doodle"></span>
+  <p class="footer-quote">"It is important to draw wisdom from many different places." - Uncle Iroh</p>
+  Judah Zoe Athaliah Noefe © 2026
+</footer>
+
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.innerHTML = isOpen ? '<i class="ti ti-x"></i>' : '<i class="ti ti-menu-2"></i>';
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+    });
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  const doodleEls = document.querySelectorAll('.doodle');
+  const doodleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add('doodle-shake');
+        el.addEventListener('animationend', () => {
+          el.classList.remove('doodle-shake');
+        }, { once: true });
+        doodleObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+  doodleEls.forEach(el => doodleObserver.observe(el));
+</script>
+
+</body>
+</html>
