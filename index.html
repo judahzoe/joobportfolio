@@ -516,7 +516,7 @@
   #skills .doodle{color:var(--cream);}
   #process .doodle{color:var(--blue)}
   .doodle{transition:transform .2s}
-  .doodle:hover{animation:doodle-wiggle .5s ease;}
+  .doodle.doodle-wiggle-play{animation:doodle-wiggle .5s ease;}
   @keyframes doodle-wiggle{
     0%{transform:rotate(0deg)}
     25%{transform:rotate(-10deg)}
@@ -535,7 +535,7 @@
     100%{transform:translateX(0) rotate(0deg)}
   }
   @media(prefers-reduced-motion:reduce){
-    .doodle:hover{animation:none}
+    .doodle.doodle-wiggle-play{animation:none}
     .doodle.doodle-shake{animation:none}
   }
   .exp-row h3 .doodle{color:var(--slate);margin-right:.5rem;display:inline-flex}
@@ -715,7 +715,7 @@
           <p class="bb-p2">Beyond the visuals, I also helped test the app informally alongside development, checking usability and catching bugs before release.</p>
         </div>
         <div class="device-browser">
-          <video src="BudgetBuddy-login.mp4" autoplay loop muted playsinline></video>
+          <video src="budgetbuddy-login.mp4" autoplay loop muted playsinline></video>
         </div>
       </div>
       <div class="device-row">
@@ -847,19 +847,34 @@
   revealEls.forEach(el => observer.observe(el));
 
   const doodleEls = document.querySelectorAll('.doodle');
+  function playDoodleShake(el) {
+    el.classList.remove('doodle-shake');
+    void el.offsetWidth;
+    el.classList.add('doodle-shake');
+  }
   const doodleObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const el = entry.target;
-        el.classList.add('doodle-shake');
-        el.addEventListener('animationend', () => {
-          el.classList.remove('doodle-shake');
-        }, { once: true });
-        doodleObserver.unobserve(el);
+        playDoodleShake(entry.target);
       }
     });
   }, { threshold: 0.15 });
   doodleEls.forEach(el => doodleObserver.observe(el));
+
+  function playDoodleWiggle(el) {
+    el.classList.remove('doodle-wiggle-play');
+    void el.offsetWidth;
+    el.classList.add('doodle-wiggle-play');
+  }
+  doodleEls.forEach(el => {
+    el.addEventListener('mouseenter', () => playDoodleWiggle(el));
+    el.addEventListener('touchstart', () => playDoodleWiggle(el), { passive: true });
+    el.addEventListener('animationend', (e) => {
+      if (e.animationName === 'doodle-wiggle') {
+        el.classList.remove('doodle-wiggle-play');
+      }
+    });
+  });
 </script>
 
 </body>
