@@ -593,7 +593,7 @@
     <div class="about-row reveal">
       <div class="about-text-block">
         <p>I'm a Computer Science student at the University of Baguio, with a background that started in astronomy before I found my footing in CS.</p>
-        <p>That research background left its mark on how I work. I like understanding systems from the inside out — whether that's software behavior or visual design. I'm someone who notices details other people skip past, and I'd rather get something right than get it done fast.</p>
+        <p>That research background left its mark on how I work. I like understanding systems from the inside out, whether that's software behavior or visual design. I'm someone who notices details other people skip past, and I'd rather get something right than get it done fast.</p>
       </div>
       <div class="about-photo"><img src="leo.png" alt="constellation doodle"></div>
     </div>
@@ -729,7 +729,7 @@
       <h3><span class="doodle"><img src="ladybug.png" alt="ladybug doodle"></span>QA Reviewer | SIT Sandbox</h3>
       <p class="meta">University of Baguio School of Information Technology | January – May 2026</p>
       <p>I tested features across multiple modules within a department-based web application, including registration and email verification, login, forgot password, public board display, navigation, report modals, notifications, admin dashboard, search, and filtering. I worked alongside one other tester, covering 20 test cases in total.</p>
-      <p style="margin-top:1rem"><strong>My approach:</strong> Rather than just checking whether a feature technically worked, I focused on functional testing, cross-device behavior, and regression testing after fixes — making sure resolved issues stayed resolved and didn't introduce new ones.</p>
+      <p style="margin-top:1rem"><strong>My approach:</strong> Rather than just checking whether a feature technically worked, I focused on functional testing and regression testing after fixes, making sure resolved issues stayed resolved and didn't introduce new ones.</p>
       <p class="exp-subhead">Sample Test Cases</p>
       <div class="table-wrap">
         <table>
@@ -872,6 +872,8 @@
     el.addEventListener('animationend', (e) => {
       if (e.animationName === 'doodle-wiggle') {
         el.classList.remove('doodle-wiggle-play');
+      } else if (e.animationName === 'doodle-shake') {
+        el.classList.remove('doodle-shake');
       }
     });
   });
