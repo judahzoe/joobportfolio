@@ -58,7 +58,7 @@
     display:flex;align-items:center;gap:clamp(1rem,4vw,3rem);flex-wrap:wrap;
   }
   @media(max-width:640px){
-    nav{justify-content:space-between;position:relative}
+    nav{justify-content:space-between;position:relative;gap:0}
     .nav-toggle{display:block}
     .nav-links{
       display:none;flex-direction:column;width:100%;
@@ -564,11 +564,11 @@
     <i class="ti ti-menu-2"></i>
   </button>
   <div class="nav-links">
-    <a href="about">About</a>
-    <a href="skills">Skills</a>
-    <a href="experience">Experience</a>
-    <a href="certificates">Certificates</a>
-    <a href="contact">Contact</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -594,7 +594,7 @@
     <div class="about-row reveal">
       <div class="about-text-block">
         <p>I'm a Computer Science student at the University of Baguio, with a background that started in astronomy before I found my footing in CS.</p>
-        <p>That research background left its mark on how I work. I like understanding systems from the inside out — whether that's software behavior or visual design. I'm someone who notices details other people skip past, and I'd rather get something right than get it done fast.</p>
+        <p>That research background left its mark on how I work. I like understanding systems from the inside out, whether that's software behavior or visual design. I'm someone who notices details other people skip past, and I'd rather get something right than get it done fast.</p>
       </div>
       <div class="about-photo"><img src="leo.png" alt="constellation doodle"></div>
     </div>
@@ -693,7 +693,7 @@
     <div class="exp-row reveal">
       <h3><span class="doodle"><img src="cursor.png" alt="cursor doodle"></span>Freelance Graphic Designer</h3>
       <p class="meta">January 2026 – Present</p>
-      <p>I design logos and visual assets for early-stage apps and personal projects.</p>
+      <p>I design logos and visual assets for early-stage apps and personal projects. This site is one of those projects, with every doodle, animation, and layout choice designed and coded from scratch.</p>
 
       <p class="exp-subhead">Personal Logo Design</p>
       <div class="pld-row">
@@ -706,9 +706,9 @@
 
       <p class="exp-subhead">BudgetBuddy | Logo &amp; Branding Assets</p>
       <div class="bb-icons">
-        <div class="bb-icon"><img src="budgetbuddy-logo.png" alt="BudgetBuddy logo icon"></div>
-        <div class="bb-icon"><img src="budgetbuddy-login-icon.png" alt="BudgetBuddy login icon"></div>
-        <div class="bb-icon"><img src="budgetbuddy-chat-icon.png" alt="BudgetBuddy chat icon"></div>
+        <div class="bb-icon"><img src="budgetbuddy-icon-logo.png" alt="BudgetBuddy logo icon"></div>
+        <div class="bb-icon"><img src="budgetbuddy-icon-login.png" alt="BudgetBuddy login icon"></div>
+        <div class="bb-icon"><img src="budgetbuddy-icon-chat.png" alt="BudgetBuddy chat icon"></div>
       </div>
       <div class="bb-row1">
         <div class="bb-text">
@@ -730,7 +730,7 @@
       <h3><span class="doodle"><img src="ladybug.png" alt="ladybug doodle"></span>QA Reviewer | SIT Sandbox</h3>
       <p class="meta">University of Baguio School of Information Technology | January – May 2026</p>
       <p>I tested features across multiple modules within a department-based web application, including registration and email verification, login, forgot password, public board display, navigation, report modals, notifications, admin dashboard, search, and filtering. I worked alongside one other tester, covering 20 test cases in total.</p>
-      <p style="margin-top:1rem"><strong>My approach:</strong> Rather than just checking whether a feature technically worked, I focused on functional testing, cross-device behavior, and regression testing after fixes — making sure resolved issues stayed resolved and didn't introduce new ones.</p>
+      <p style="margin-top:1rem"><strong>My approach:</strong> Rather than just checking whether a feature technically worked, I focused on functional testing and regression testing after fixes, making sure resolved issues stayed resolved and didn't introduce new ones.</p>
       <p class="exp-subhead">Sample Test Cases</p>
       <div class="table-wrap">
         <table>
@@ -829,10 +829,15 @@
     navToggle.innerHTML = isOpen ? '<i class="ti ti-x"></i>' : '<i class="ti ti-menu-2"></i>';
   });
   navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
       navLinks.classList.remove('open');
       navToggle.setAttribute('aria-expanded', 'false');
       navToggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 
